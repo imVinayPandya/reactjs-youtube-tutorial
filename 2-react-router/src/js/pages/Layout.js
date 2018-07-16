@@ -1,4 +1,7 @@
 import React from 'react';
+import Nav from '../components/layout/Nav';
+import Footer from '../components/layout/Footer';
+import Featured from './Featured';
 
 
 export default class Layout extends React.Component {
@@ -8,10 +11,29 @@ export default class Layout extends React.Component {
   }
 
   render() {
+
+    const containerStyle = {
+      marginTop: "60px"
+    };
     return (
       <div>
-        <h1>KillerNews.net</h1>
-        <br />
+
+        <Nav location={this.props.location} />
+
+        <div class="container" style={containerStyle}>
+          <div class="row">
+            <div class="col-lg-12">
+              <h1>KillerNews.net</h1>
+              <br />
+            </div>
+          </div>
+
+          <div class="row">
+            <Featured></Featured>
+          </div>
+
+          <Footer></Footer>
+        </div>
       </div>
     );
   }
