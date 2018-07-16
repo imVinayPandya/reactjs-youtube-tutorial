@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Link, NavLink } from 'react-router-dom'
 
 import Layout from "./pages/Layout";
 import Featured from "./pages/Featured";
@@ -11,11 +11,19 @@ import Settings from "./pages/Settings";
 const app = document.getElementById("app");
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
+  <HashRouter>
+    <div>
       <Route exact path="/" component={Layout} />
-      <Route path="/archives" component={Archives} />
+      <Route path="/archives/:slug" component={Archives} />
       <Route path="/settings" component={Settings} />
-    </Switch>
-  </BrowserRouter>,
+
+      <NavLink activeClassName="isActive" to="/archives/slug-slug" class="btn btn-danger">archives</NavLink>
+      <NavLink to="/settings">
+        <button class="btn btn-success">
+          settings
+        </button>
+      </NavLink>
+      <NavLink to="/" class="btn btn-primary">Home</NavLink>
+    </div>
+  </HashRouter>,
   app);
